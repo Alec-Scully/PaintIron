@@ -1,0 +1,14 @@
+import React, { Component } from 'react';
+
+export default class BoardContainer extends Component {
+
+    render() {
+        return(
+            <div>
+                
+            </div>
+        )
+    }
+}
+
+// export default BoardContrainer
