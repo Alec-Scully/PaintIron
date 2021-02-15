@@ -19,9 +19,9 @@ User.create(username: "admin2", name: "admin2", password: "testing2")
 User.create(username: "admin3", name: "admin3", password: "testing3")
 User.create(username: "admin4", name: "admin4", password: "testing4")
 
-UserPalette.create(user_id: User.first, color_swatch: ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"])
+UserPalette.create(user_id: User.first.id, color_swatch: ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"])
 
-PbPrivate.create(name: "defualt board", user_id: User.first, pixel_board: [
+PbPrivate.create(name: "defualt board", user_id: User.first.id, pixel_board: [
     [
       '#FFF',    '#FFF',    '#FFF',    '#FFF',
       '#FFF',    '#FFF',    '#FFF',    '#FFF',
@@ -727,4 +727,4 @@ PbPrivate.create(name: "defualt board", user_id: User.first, pixel_board: [
     ]
   ])
 
-UserPublicJoiner.create(user_id: User.first, pb_public_id: PbPublic.first)
+UserPublicJoiner.create(user_id: User.first.id, pb_public_id: PbPublic.first.id)
