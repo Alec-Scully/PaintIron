@@ -5,7 +5,6 @@ class UserPublicJoinersController < ApplicationController
 
     def show
         user_public_joiner = UserPublicJoiner.find(params[:id])
-        # render json: user 
         render json: user_public_joiner.to_json(user_public_joiner_serializer_options) 
     end
 
