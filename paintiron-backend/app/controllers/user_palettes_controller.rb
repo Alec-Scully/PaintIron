@@ -12,7 +12,6 @@ class UserPalettesController < ApplicationController
       userPalette = UserPalette.new(user_palette_serializer_options)
       userPalette.save
       render json: userPalette.to_json(user_palette_serializer_options)
-      end
    end
 
    def update
