@@ -12,7 +12,6 @@ class PbPrivatesController < ApplicationController
       pbPrivate = PbPrivate.new(pb_private_serializer_options)
       pbPrivate.save
       render json: pbPrivate.to_json(pb_private_serializer_options)
-      end
    end
 
    def update

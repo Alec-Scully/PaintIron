@@ -12,7 +12,6 @@ class PbPublicsController < ApplicationController
       pbPublic = PbPublic.new(pb_public_serializer_options)
       pbPublic.save
       render json: pbPublic.to_json(pb_public_serializer_options)
-      end
    end
 
    def update

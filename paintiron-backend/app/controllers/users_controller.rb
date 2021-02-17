@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized, only: [:create]
 
     def index
         render json: User.all.to_json(user_serializer_options)
@@ -10,12 +11,15 @@ class UsersController < ApplicationController
         render json: user.to_json(user_serializer_options) 
     end
 
-    def create 
-        user = User.new(user_serializer_options)
-        user.save
-        render json: user.to_json(user_serializer_options)
+    def create
+        user = User.create(user_params)
+       
+        if user.valid?
+          render json: { user: user, status: :created}
+        else
+          render json: { error: 'failed to create user', status: :not_acceptable}
         end
-    end
+      end
 
     def update
         user = User.find(params[:id])
@@ -30,10 +34,14 @@ class UsersController < ApplicationController
 
     private
 
-   def user_serializer_options()
-      {
-         except: [:created_at, :updated_at]
-      }
-      
-   end
+    def user_serializer_options()
+        {
+            except: [:created_at, :updated_at]
+        }
+    end
+
+    def user_params
+        params.require(:user).permit(:username, :email, :password)
+    end
+
 end
