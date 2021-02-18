@@ -33,8 +33,10 @@ export default class BoardContainer extends Component {
                         </div>
                     }
                     <br />
-                    Pick which board you want to see!
-                    {this.props.allBoards.map(board => <BoardSelector setCurBoard={this.props.setCurBoard} board={board} key={board.id} />)}
+                    <div>
+                        Pick which board you want to see! <br/>
+                        {this.props.allBoards.map(board => <BoardSelector setCurBoard={this.props.setCurBoard} board={board} key={board.id} />)}
+                    </div>
                 </div>
                 <div>
                     <CurrentBoard saveBoard={this.props.saveBoard}

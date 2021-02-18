@@ -18,7 +18,7 @@ User.create(username: "admin1", email: "admin1", password: "testing1")
 
 UserPalette.create(user_id: User.first.id, color_swatch: ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"])
 
-PbPrivate.create(name: "defualt board", user_id: User.first.id, pixel_board: [
+PbPrivate.create(name: "Defualt Board", user_id: User.first.id, pixel_board: [
     [
       '#FFF',    '#FFF',    '#FFF',    '#FFF',
       '#FFF',    '#FFF',    '#FFF',    '#FFF',

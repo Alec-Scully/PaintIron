@@ -4,9 +4,9 @@ class BoardSelector extends Component {
 
     render() {
         return (
-            <div>
+            // <div>
                 <button onClick={() => this.props.setCurBoard(this.props.board)}>{this.props.board.name}</button>
-            </div>
+            // </div>
         )
     }
 }

@@ -64,19 +64,20 @@ body, html, #root, #app {
 
 #matrix {
   margin: auto;
+  padding: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 400px;
-  width: 400px;
+  height: auto;
+  width: auto;
   min-width: 400px;
   min-height: 400px;
   background-color: #bbb;
 }
 
 .row {
-  width: 400px;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;

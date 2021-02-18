@@ -35,12 +35,13 @@ class App extends Component {
   }
 
   setCurrentUser = (user) => {
-    console.log(user)
+    console.log(user.pb_privates)
     this.setState({
       user: user,
       loggedIn: true,
       curSwatch: user.user_palette.color_swatch,
-      allBoards: user.pb_privates
+      allBoards: user.pb_privates,
+      curBoard: user.pb_privates[0].pixel_board
     });
   }
 
@@ -109,6 +110,8 @@ class App extends Component {
     reqPackage.body = JSON.stringify(sendBoard)
 
     fetch("http://localhost:3000/pb_privates/" + id, reqPackage)
+
+    // console.log("Board saved!")
   }
 
   deleteBoard = () => {
