@@ -11,7 +11,7 @@ class AuthController < ApplicationController
             render json: { user: UserSerializer.new(@user), jwt: @token, include: [:pb_privates, :user_palette] }, status: :accepted
 
         else
-            redner json: { message: 'Invalid username or password' }, status: :unauthroized
+            render json: { message: 'Invalid username or password' }, status: :unauthroized
         end
     end
 

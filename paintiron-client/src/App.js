@@ -96,11 +96,15 @@ class App extends Component {
   }
 
   saveBoard = () => {
-    let sendBoard = this.state.curBoard
+    // let sendBoard = this.state.curBoard
     let id = this.state.curBoardId
 
+    let sendBoard = {
+      "pixel_board": this.state.curBoard
+    }
+
     let reqPackage = {}
-    reqPackage.headers = { "Content-Type": "application/json" }
+    reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
     reqPackage.method = "PATCH"
     reqPackage.body = JSON.stringify(sendBoard)
 
@@ -124,6 +128,7 @@ class App extends Component {
 
   createBoard = (newBoard) => {
     this.setState({allBoards: [...this.state.allBoards, newBoard]})
+    this.setCurBoard(newBoard)
   }
 
   render() {

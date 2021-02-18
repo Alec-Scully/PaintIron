@@ -1,4 +1,5 @@
 class UserPublicJoinersController < ApplicationController
+
     def index
         render json: UserPublicJoiner.all.to_json(user_public_joiner_serializer_options)
     end
