@@ -15,9 +15,6 @@ UserPublicJoiner.destroy_all
 
 
 User.create(username: "admin1", email: "admin1", password: "testing1")
-User.create(username: "admin2", email: "admin2", password: "testing2")
-User.create(username: "admin3", email: "admin3", password: "testing3")
-User.create(username: "admin4", email: "admin4", password: "testing4")
 
 UserPalette.create(user_id: User.first.id, color_swatch: ["#F00", "#F80", "#FF0", "#0F0", "#00F", "#508", "#90D", "#FFF", "#000"])
 

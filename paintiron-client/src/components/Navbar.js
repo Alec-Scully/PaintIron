@@ -26,8 +26,8 @@ class Navbar extends React.Component {
             background: 'darkblue'
           }}
         >Home</NavLink>
-        
-        
+
+
         <NavLink
           to="/about"
           exact
@@ -36,41 +36,41 @@ class Navbar extends React.Component {
             background: 'darkblue'
           }}
         >About</NavLink>
-        
+
         {/* Only show this button if there is no user logged in */}
-        {this.props.loggedIn ? null : 
-        <NavLink
-          to="/login"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'darkblue'
-          }}
-        >Login</NavLink>
-        }
-        
-        {/* Only show this button if there is no user logged in */}
-        {this.props.loggedIn ? null : 
-        <NavLink
-          to="/signup"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'darkblue'
-          }}
-        >SignUp</NavLink>
+        {this.props.loggedIn ? null :
+          <NavLink
+            to="/login"
+            exact
+            style={link}
+            activeStyle={{
+              background: 'darkblue'
+            }}
+          >Login</NavLink>
         }
 
         {/* Only show this button if there is no user logged in */}
-        {this.props.loggedIn ?  
-        <NavLink
+        {this.props.loggedIn ? null :
+          <NavLink
+            to="/signup"
+            exact
+            style={link}
+            activeStyle={{
+              background: 'darkblue'
+            }}
+          >SignUp</NavLink>
+        }
+
+        {/* Only show this button if there is no user logged in */}
+        {this.props.loggedIn ?
+          <NavLink
             onClick={() => this.props.logOut()}
             to="/"
             exact
             style={link}
-            >LogOut</NavLink>
-          : 
-            null
+          >LogOut</NavLink>
+          :
+          null
         }
       </div>
     )

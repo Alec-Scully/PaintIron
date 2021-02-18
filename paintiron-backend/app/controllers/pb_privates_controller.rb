@@ -1,4 +1,6 @@
 class PbPrivatesController < ApplicationController
+   # skip_before_action :authorized, only: [:create, :update]
+
    def index
       render json: PbPrivate.all.to_json(pb_private_serializer_options)
    end
