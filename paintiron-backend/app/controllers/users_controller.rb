@@ -13,6 +13,9 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
+        UserPalette.create(user_id: user.id, color_swatch: User.first.user_palette.color_swatch)
+        PbPrivate.create(name: PbPrivate.first.name, user_id: user.id, pixel_board: PbPrivate.first.pixel_board)
+
        
         if user.valid?
           render json: { user: user, status: :created}

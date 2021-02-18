@@ -7,7 +7,8 @@ class AuthController < ApplicationController
         if @user && @user.authenticate(user_login_params[:password])
             @token = encode_token({ user_id: @user.id })
 
-            render json: { user: UserSerializer.new(@user), jwt: @token }, status: :accepted
+            # render json: { user: UserSerializer.new(@user), jwt: @token }, status: :accepted
+            render json: { user: UserSerializer.new(@user), jwt: @token, include: [:pb_privates, :user_palette] }, status: :accepted
 
         else
             redner json: { message: 'Invalid username or password' }, status: :unauthroized
@@ -18,7 +19,9 @@ class AuthController < ApplicationController
         @token = params[:token]
         # byebug
         user = User.find(JWT.decode(@token, "Children of the Code", true, algorithm: 'HS256')[0]["user_id"])
-        render json: user
+        render json: user.to_json(include: [:pb_privates, :user_palette])
+        # render json: user, :include => {:pb_private, :pb_publics}
+        # render :json => user.to_json(:include => {:pb_private})
     end
 
     private

@@ -21,13 +21,13 @@ class Login extends Component {
     event.target.reset()
 
     const { username, password } = this.state
-    const user = { username, password}
+    const user = { username, password }
 
     fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ user })
     })
@@ -35,7 +35,8 @@ class Login extends Component {
       .then(r => {
         localStorage.token = r.jwt;
 
-        this.props.setCurrentUser(r.user)
+        // this.props.setCurrentUser(r.user)
+        this.props.tokenLogin(localStorage.token)
       })
   }
 

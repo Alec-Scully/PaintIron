@@ -35,7 +35,7 @@ class Signup extends Component {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type" : "application/json"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ user })
     })
@@ -45,34 +45,34 @@ class Signup extends Component {
           this.setState({ created: true, errorMessage: "" })
         }
       })
-      .catch(r => this.setState({ errorMessage: "Your signup did not go through. Make sure all parts of this project are running before attempting again!"}))
+      .catch(r => this.setState({ errorMessage: "Your signup did not go through. Make sure all parts of this project are running before attempting again!" }))
   }
 
   render() {
-    return(
+    return (
       <div>
         {this.state.created ? (
           <Redirect to="/login" />
         ) : (
-          <div>
-            <div><p>{this.state.errorMessage}</p></div>
+            <div>
+              <div><p>{this.state.errorMessage}</p></div>
               <form onSubmit={this.createUser}>
-              <h1>Sign Up</h1>
-              <div>
-                <input onChange={this.handleChange} type="text" name="email" placeholder="Email" />
-              </div>
-              <div>
-                <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
-              </div>
-              <div>
-                <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
-              </div>
-              <input type="submit" value="Sign Up" />
+                <h1>Sign Up</h1>
+                <div>
+                  <input onChange={this.handleChange} type="text" name="email" placeholder="Email" />
+                </div>
+                <div>
+                  <input onChange={this.handleChange} type="text" name="username" placeholder="Username" />
+                </div>
+                <div>
+                  <input onChange={this.handleChange} type="password" name="password" placeholder="Password" />
+                </div>
+                <input type="submit" value="Sign Up" />
               </form>
-          </div>
-        )}
+            </div>
+          )}
       </div>
-    ) 
+    )
   }
 }
 
