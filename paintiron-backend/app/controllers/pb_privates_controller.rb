@@ -1,5 +1,5 @@
 class PbPrivatesController < ApplicationController
-   # skip_before_action :authorized, only: [:create, :update]
+   skip_before_action :authorized, only: [:index, :destroy]
 
    def index
       render json: PbPrivate.all.to_json(pb_private_serializer_options)
@@ -11,15 +11,16 @@ class PbPrivatesController < ApplicationController
    end
 
    def create 
-      pbPrivate = PbPrivate.new(pb_private_serializer_options)
+      pbPrivate = PbPrivate.new(board_params)
+      # byebug
       pbPrivate.save
-      render json: pbPrivate.to_json(pb_private_serializer_options)
+      render json: pbPrivate.to_json()
    end
 
    def update
       pbPrivate = PbPrivate.find(params[:id])
-      pbPrivate.update(pb_private_serializer_options)
-      render json: pbPrivate.to_json(pb_private_serializer_options)
+      pbPrivate.update(:pixel_board => params[:pixel_board])
+      render json: pbPrivate.to_json()
    end
 
    def destroy
@@ -34,4 +35,9 @@ class PbPrivatesController < ApplicationController
          except: [:created_at, :updated_at]
       }
    end
+
+   def board_params
+      params.require(:pb_private).permit!
+      # params.require(:pb_private).permit(:name, :user_id, { pixel_board: [] })
+  end
 end

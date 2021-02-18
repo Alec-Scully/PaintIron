@@ -35,12 +35,13 @@ class App extends Component {
   }
 
   setCurrentUser = (user) => {
-    console.log(user)
+    console.log(user.pb_privates)
     this.setState({
       user: user,
       loggedIn: true,
       curSwatch: user.user_palette.color_swatch,
-      allBoards: user.pb_privates
+      allBoards: user.pb_privates,
+      curBoard: user.pb_privates[0].pixel_board
     });
   }
 
@@ -96,15 +97,21 @@ class App extends Component {
   }
 
   saveBoard = () => {
-    let sendBoard = this.state.curBoard
+    // let sendBoard = this.state.curBoard
     let id = this.state.curBoardId
 
+    let sendBoard = {
+      "pixel_board": this.state.curBoard
+    }
+
     let reqPackage = {}
-    reqPackage.headers = { "Content-Type": "application/json" }
+    reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
     reqPackage.method = "PATCH"
     reqPackage.body = JSON.stringify(sendBoard)
 
     fetch("http://localhost:3000/pb_privates/" + id, reqPackage)
+
+    // console.log("Board saved!")
   }
 
   deleteBoard = () => {
@@ -124,6 +131,7 @@ class App extends Component {
 
   createBoard = (newBoard) => {
     this.setState({allBoards: [...this.state.allBoards, newBoard]})
+    this.setCurBoard(newBoard)
   }
 
   render() {

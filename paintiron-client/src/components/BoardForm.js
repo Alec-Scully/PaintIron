@@ -5,8 +5,7 @@ class BoardForm extends Component {
     state = {
         boardName: "",
         user_id: this.props.user.id,
-        pixelBoard: [],
-        boardSize: "25x45"
+        boardSize: "25x46"
     }
 
     handleSubmit(e) {
@@ -14,16 +13,21 @@ class BoardForm extends Component {
         e.target.reset()
         this.props.handleClick()
 
-        this.makeBoard()
+        let size = this.state.boardSize.split('x')
+        let createdBoard = (() => Array(parseInt(size[0])).fill(Array(parseInt(size[1])).fill('#FFF')))()
 
         let newBoard = {
-            boardName: this.state.boardName,
+            name: this.state.boardName,
             user_id: this.state.user_id,
-            pixelBoard: this.state.pixelBoard
+            pixel_board: createdBoard
         }
 
+        this.setState({ 
+            boardSize: "25x46" 
+        }, )
+
         let reqPackage = {}
-        reqPackage.headers = { "Content-Type": "application/json" }
+        reqPackage.headers = { "Content-Type": "application/json", Authorization: `Bearer ${localStorage.token}` }
         reqPackage.method = "POST"
         reqPackage.body = JSON.stringify(newBoard)
 
@@ -37,16 +41,6 @@ class BoardForm extends Component {
 
     }
 
-    makeBoard = () => {
-        let size = this.state.boardSize.split('x')
-        let newBoard = (() => Array(parseInt(size[0])).fill(Array(parseInt(size[1])).fill('#F00')))()
-
-        this.setState({ 
-            pixelBoard: newBoard,
-            boardSize: "25x45" 
-        })
-    }
-
     render() {
         return (
             <div className="container">
@@ -55,9 +49,9 @@ class BoardForm extends Component {
                     <input onChange={(e) => this.setState({ boardName: e.target.value })} type="text" name="name" placeholder="Enter the boards name..." className="input-text" />
                     <br />
                     <select onChange={(e) => this.setState({ boardSize: e.target.value })}>
-                        <option value="25x45">Small</option>
-                        <option value="50x90">Medium</option>
-                        <option value="75x135">Large</option>
+                        <option value="25x46">Small</option>
+                        <option value="50x92">Medium</option>
+                        <option value="75x138">Large</option>
                     </select>
                     <br />
                     <input type="submit" name="submit" value="Create New Board" className="submit" />

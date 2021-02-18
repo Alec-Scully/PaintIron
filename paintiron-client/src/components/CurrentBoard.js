@@ -17,8 +17,8 @@ class CurrentBoard extends Component {
             <div id="matrix">
                 {this.genMatrix()}
                 <br />
-                <button onClick={() => this.props.deleteBoard()}>Delete Board</button>
                 <button onClick={() => this.props.saveBoard()}>Save Board</button>
+                <button onClick={() => this.props.deleteBoard()}>Delete Board</button>
             </div>
         )
     }
