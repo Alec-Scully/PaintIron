@@ -15,7 +15,7 @@ class Cell extends Component {
 
     render() {
         return (
-            <div onClick={this.handleClick} className="cell"
+            <div onDragEnter={this.handleClick} onClick={this.handleClick} className="cell"
                 style={{ backgroundColor: this.state.color }}>
             </div>
         )

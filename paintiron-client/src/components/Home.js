@@ -1,6 +1,7 @@
 // src/Home.js
 import React from 'react';
 import BoardContainer from './BoardContainer'
+import paintiron_logo from './paintiron_logo_copy.png'
 
 class Home extends React.Component {
   render() {
@@ -20,7 +21,13 @@ class Home extends React.Component {
             user={this.props.user}
           />
           :
-          <h1>Welcome to Paintiron! You are NOT logged in!</h1>
+          <div>
+            <img src={paintiron_logo} alt="paintiron logo"/>
+            <h1>Welcome to Paintiron!</h1>
+            <br/>
+            <p> You are currently NOT logged in! In order to see the contents of this page, you must be logged in.</p>
+            <p> Please click the Login button above to log in, or click the SignUp button above to become a memeber!</p>
+          </div>
         }
       </div>
     )
