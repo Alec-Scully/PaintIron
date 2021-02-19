@@ -60,8 +60,8 @@ class App extends Component {
     } else {
       return (
         <div>
-          <h2> I'm sorry, I don't know who you are...</h2>
-          <h3>Please log in above!</h3>
+          <br/>
+          <br/>
         </div>
       );
     }

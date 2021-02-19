@@ -107,3 +107,9 @@ body, html, #root, #app {
   height: 50px;
   margin: 0 2%;
 }
+
+.logo {
+  margin: auto;
+  display: table;
+  height: 300px;
+}
