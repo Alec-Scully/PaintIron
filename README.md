@@ -25,6 +25,9 @@ ABOUT:
   This project was designed to be a pixel art board for users to create images and save them to their profiles.
   
 USER STORIES:
+  * A user should be able to sign in or log in to see the home page.
+  * A user should be able to create/edit/save/delete pixel boards.
+  * A user should be able to log out and have their data persist for their next login.
 
 PROJECT SPECIFICATIONS:
   * The frontend of this project was created using React
